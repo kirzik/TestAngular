@@ -1,0 +1,34 @@
+<p>Выберете ПУ и дату, затем нажмите кнопку  <img class="img" src="../../assets/button/update.png" alt="update"></p>
+<br>
+<div class="nav">
+    <select name="em" id="em" [(ngModel)]="valueSelect">
+        <option *ngFor="let em of emList" [value]="em.SerialNumber">{{em.Name}}</option>
+    </select>
+    <button class="btn" (click)="btn(-1)"><img class="img" src="/assets/button/left.jpg" alt="left"></button>
+    <input type="date" step="1" [(ngModel)]="valueDate" (ngModelChange)="onChangeDate(valueDate)">
+    <button class="btn" (click)="btn(1)"><img class="img" src="/assets/button/right.jpg" alt="right"></button>
+    <button class="btn" (click)="btnUpdate()"><img class="img" src="/assets/button/update.png" alt="update"></button>
+</div>
+<br>
+<div class="table" >
+    <div class="header row">
+        <div class="cellHeader"></div>
+        <div class="cellHeader">Активная, прием, кВт</div>
+        <div class="cellHeader">Активная, отдача, кВт</div>
+        <div class="cellHeader">Реактивная, прием, кВАр</div>
+        <div class="cellHeader">Реактивная, отдача, кВАр</div>
+    </div>
+    <div class="tableRow" *ngIf="selectedBool">
+        <div class="row" *ngFor="let row of data;let ev = even"
+            [class.bgRow]=" ev ? false : true">
+            <div class="cellFist"><p class="textCell">{{row.DataTimeStart}} - {{row.DataTimeEnd}}</p></div>
+            <div class="cell"><p class="textCell">{{row.ActivePlus / coefficient}}</p></div>
+            <div class="cell"><p class="textCell">{{row.ActiveMinus / coefficient}}</p></div>
+            <div class="cell"><p class="textCell">{{row.RectivePlus / coefficient}}</p></div>
+            <div class="cell"><p class="textCell">{{row.RectiveMinus / coefficient}}</p></div>
+        </div>
+    </div>
+    <div class="cellNon" *ngIf="!selectedBool"><p class="textCell">Прибор не выбран</p></div>
+</div>
+
+
