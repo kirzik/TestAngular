@@ -9,7 +9,7 @@ export class TaskDataService {
 
   constructor(private http: HttpClient) { }
    
-  baseUrl = "http://localhost:5000/meters";
+  baseUrl = "https://localhost:5001/meters";
 
   //получить список всех ПУ
   getEmList(){

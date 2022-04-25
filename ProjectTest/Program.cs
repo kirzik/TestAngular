@@ -22,6 +22,7 @@ namespace ProjectTest
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                    webBuilder.UseKestrel();
+                    });
     }
 }
